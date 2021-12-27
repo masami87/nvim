@@ -1,5 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
+Plug 'ray-x/lsp_signature.nvim'
+
 " git surpport
 Plug 'lewis6991/gitsigns.nvim'
 
@@ -58,6 +60,7 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'catppuccin/nvim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'shaunsingh/nord.nvim'
 
 
 Plug 'kyazdani42/nvim-tree.lua'

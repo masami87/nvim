@@ -5,6 +5,7 @@ set termguicolors
 
 " theme
 source $HOME/.config/nvim/theme/tokyonight.vim
+" source $HOME/.config/nvim/theme/nord.vim
 
 " Set completeopt to have a better completion experience
 " :help completeopt
@@ -241,3 +242,5 @@ lua << EOF
 EOF
 
 lua require('gitsigns').setup()
+
+lua require "lsp_signature".setup()
