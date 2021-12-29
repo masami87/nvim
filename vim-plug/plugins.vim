@@ -58,9 +58,10 @@ Plug 'nvim-lualine/lualine.nvim'
 
 " theme
 Plug 'ayu-theme/ayu-vim'
-Plug 'catppuccin/nvim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'shaunsingh/nord.nvim'
+Plug 'ray-x/aurora'
+Plug 'EdenEast/nightfox.nvim'
 
 
 Plug 'kyazdani42/nvim-tree.lua'

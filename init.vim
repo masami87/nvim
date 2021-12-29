@@ -1,11 +1,15 @@
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/keys/mappings.vim
 source $HOME/.config/nvim/vim-plug/plugins.vim
-set termguicolors
 
+
+set termguicolors
 " theme
 source $HOME/.config/nvim/theme/tokyonight.vim
 " source $HOME/.config/nvim/theme/nord.vim
+" colorscheme aurora
+" source $HOME/.config/nvim/theme/nightfox.vim
+
 
 " Set completeopt to have a better completion experience
 " :help completeopt
