@@ -202,6 +202,12 @@ EOF
 lua << EOF
 require'nvim-tree'.setup{
     update_cwd = true,
+    ignore_ft_on_setup  = {},
+    git = {
+        enable = true,
+        ignore = true,
+        timeout = 500,
+    },
     view = {
         auto_resize = true,
     },
