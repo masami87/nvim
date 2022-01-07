@@ -34,6 +34,7 @@ set showtabline=2                       " Always show tabs
 set updatetime=300                      " Faster completion
 " set timeoutlen=500                      " By default timeoutlen is 1000 ms
 set formatoptions-=cro                  " Stop newline continution of comments
+" 在wsl使用参考https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 "set autochdir                           " Your working directory will always be the same as your working directory
 set ttyfast                             " Speed up scrolling in Vim
