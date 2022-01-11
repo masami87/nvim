@@ -1,5 +1,9 @@
 call plug#begin('~/.vim/plugged')
 
+" debugging
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+
 Plug 'ray-x/lsp_signature.nvim'
 
 " git surpport

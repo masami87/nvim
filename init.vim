@@ -72,7 +72,16 @@ lua require('Comment').setup()
 lua <<EOF
 local nvim_lsp = require'lspconfig'
 
+-- Update this path
+local extension_path = '/home/masami/software/codelldb/extension/'
+local codelldb_path = extension_path .. 'adapter/codelldb'
+local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
+
 local opts = {
+    dap = {
+        adapter = require('rust-tools.dap').get_codelldb_adapter(
+            codelldb_path, liblldb_path)
+    },
     tools = { -- rust-tools options
         autoSetHints = true,
         hover_with_actions = true,
@@ -275,3 +284,5 @@ EOF
 lua require('gitsigns').setup()
 
 lua require "lsp_signature".setup()
+
+source $HOME/.config/nvim/dap.vim
