@@ -1,11 +1,10 @@
-lua<<EOF
 local dap = require('dap')
-
 dap.adapters.codelldb = function(on_adapter)
   local stdout = vim.loop.new_pipe(false)
   local stderr = vim.loop.new_pipe(false)
 
   -- CHANGE THIS!
+  -- NOTE: 指定codelldb
   local cmd = '/home/masami/software/codelldb/extension/adapter/codelldb'
 
   local handle, pid_or_err
@@ -25,7 +24,6 @@ dap.adapters.codelldb = function(on_adapter)
   stdout:read_start(function(err, chunk)
     assert(not err, err)
     if chunk then
-
       local port = chunk:match('Listening on port (%d+)')
       if port then
         vim.schedule(function()
@@ -46,14 +44,13 @@ dap.adapters.codelldb = function(on_adapter)
     assert(not err, err)
     if chunk then
       vim.schedule(function()
-
         require("dap.repl").append(chunk)
       end)
-
     end
   end)
 end
 
+-- NOTE: 设置语言的调试器
 dap.configurations.cpp = {
   {
     name = "Launch file",
@@ -68,17 +65,3 @@ dap.configurations.cpp = {
 }
 dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
-
-
-require("dapui").setup()
-local dap, dapui = require("dap"), require("dapui")
-dap.listeners.after.event_initialized["dapui_config"] = function()
-  dapui.open()
-end
-dap.listeners.before.event_terminated["dapui_config"] = function()
-  dapui.close()
-end
-dap.listeners.before.event_exited["dapui_config"] = function()
-  dapui.close()
-end
-EOF
