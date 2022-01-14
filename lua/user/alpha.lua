@@ -16,6 +16,7 @@ local dashboard = require("alpha.themes.dashboard")
 -- }
 
 dashboard.section.header.val = require("user.alpha-logo")
+
 dashboard.section.header.opts.hl = "Number"
 
 dashboard.section.buttons.val = {
@@ -34,12 +35,12 @@ local function footer()
 	-- local fortune = handle:read("*a")
 	-- handle:close()
 	-- return fortune
-	return "不要温和地走进那个良夜"
+	return "Do not go gentle into that good night"
 end
 
 dashboard.section.footer.val = footer()
 
-dashboard.section.footer.opts.hl = "Number"
+dashboard.section.footer.opts.hl = "Comment"
 dashboard.section.buttons.opts.hl = "Keyword"
 
 dashboard.opts.opts.noautocmd = true
