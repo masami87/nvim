@@ -46,6 +46,16 @@ packer.init {
 return packer.startup(function(use)
   -- colorscheme
   use 'folke/tokyonight.nvim'
+  use 'shaeinst/roshnivim-cs'
+  use({
+    'rose-pine/neovim',
+    as = 'rose-pine',
+    -- tag = 'v0.1.0', -- Optional tag release
+    -- config = function()
+    --
+    --     vim.cmd('colorscheme rose-pine')
+    -- end
+})
 
   use "kyazdani42/nvim-web-devicons"
   use 'nvim-lualine/lualine.nvim'
