@@ -57,6 +57,8 @@ return packer.startup(function(use)
     -- end
 })
 
+  use "goolord/alpha-nvim"
+
   use "kyazdani42/nvim-web-devicons"
   use 'nvim-lualine/lualine.nvim'
 
