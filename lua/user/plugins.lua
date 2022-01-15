@@ -55,7 +55,8 @@ return packer.startup(function(use)
     --
     --     vim.cmd('colorscheme rose-pine')
     -- end
-})
+  })
+  use 'rebelot/kanagawa.nvim'
 
   use "goolord/alpha-nvim"
 
