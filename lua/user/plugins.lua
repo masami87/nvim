@@ -57,6 +57,7 @@ return packer.startup(function(use)
     -- end
   })
   use 'rebelot/kanagawa.nvim'
+  use 'tiagovla/tokyodark.nvim'
 
   use "goolord/alpha-nvim"
 
@@ -99,6 +100,7 @@ return packer.startup(function(use)
   -- 自动安装nvim-lsp-server
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
   use "ray-x/lsp_signature.nvim" -- function signature hint
+  use "j-hui/fidget.nvim"
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
