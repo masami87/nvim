@@ -10,12 +10,15 @@ local colors = {
   magenta  = '#c678dd',
   blue     = '#51afef',
   red      = '#ec5f67',
+  fuchsia  = '#FF00FF',
+  pink     = '#eecbce'
 }
 
 local config = {
   options = {
 		icons_enabled = true,
-		theme = "ayu_dark",
+		-- theme = "ayu_dark",
+		theme = "auto",
     component_separators = { left = '|', right = '|'},
     section_separators = { left = '', right = ''},
 		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
@@ -28,7 +31,7 @@ local config = {
            {
 
           'filename',
-          color = { fg = colors.violet, gui = 'bold'},
+          color = { fg = colors.pink, gui = 'bold'},
           file_status = true,   -- displays file status (readonly status, modified status)
           path = 1,             -- 0 = just filename, 1 = relative path, 2 = absolute path
           shorting_target = 40, -- Shortens path to leave 40 space in the window

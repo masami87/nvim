@@ -58,6 +58,7 @@ return packer.startup(function(use)
   })
   use 'rebelot/kanagawa.nvim'
   use 'tiagovla/tokyodark.nvim'
+  use 'marko-cerovac/material.nvim'
 
   use "goolord/alpha-nvim"
 
