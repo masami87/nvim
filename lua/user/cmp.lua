@@ -53,7 +53,7 @@ cmp.setup {
       luasnip.lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
-  mapping = {
+  mapping = cmp.mapping.preset.insert({
     ["<C-k>"] = cmp.mapping.select_prev_item(),
 
 		["<C-j>"] = cmp.mapping.select_next_item(),
@@ -97,7 +97,8 @@ cmp.setup {
       "i",
       "s",
     }),
-  },
+  }),
+
   -- formatting 是指补全提示的样式
   formatting = {
     fields = { "kind", "abbr", "menu" },
@@ -126,13 +127,19 @@ cmp.setup {
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,
   },
-  documentation = {
-    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
 
-  },
+  window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+    },
+
+  
 
   experimental = {
     ghost_text = false,
-    native_menu = false,
+  },
+
+  view = {
+    entries = 'native'
   },
 }
