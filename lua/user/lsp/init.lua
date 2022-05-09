@@ -14,7 +14,7 @@ local function lsp_highlight_document(client)
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
-    ]],
+    ]] ,
       false
     )
   end
@@ -24,6 +24,7 @@ end
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   -- Enable completion triggered by <c-x><c-o>
@@ -31,7 +32,7 @@ local on_attach = function(client, bufnr)
 
 
   -- Mappings.
-  local opts = { noremap=true, silent=true }
+  local opts = { noremap = true, silent = true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -65,75 +66,81 @@ local lsp_installer = require("nvim-lsp-installer")
 -- Register a handler that will be called for all installed servers.
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
 lsp_installer.on_server_ready(function(server)
-    local opts = {
-      capabilities = capabilities,
-      on_attach = on_attach,
-    }
+  local opts = {
+    capabilities = capabilities,
+    on_attach = on_attach,
+  }
 
-    -- (optional) Customize the options passed to the server
-    -- if server.name == "tsserver" then
+  -- (optional) Customize the options passed to the server
+  -- if server.name == "tsserver" then
 
-    --     opts.root_dir = function() ... end
-    -- end
-    if server.name == "sumneko_lua" then
-	  	local sumneko_opts = require("user.lsp.settings.sumneko_lua")
-	  	opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
+  --     opts.root_dir = function() ... end
+  -- end
+  if server.name == "html" then
+    opts.capabilities.textDocument.completion.completionItem.snippetSupport = true
+    local html_opts = require("user.lsp.settings.html")
+    opts = vim.tbl_deep_extend("force", html_opts, opts)
+  end
 
-    end
+  if server.name == "sumneko_lua" then
+    local sumneko_opts = require("user.lsp.settings.sumneko_lua")
+    opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
 
-    -- NOTE: for rust-tools
-    if server.name == "rust_analyzer" then
-      -- Update this path
-      -- NOTE: 指定调试器为Codelldb
-      local extension_path = '/home/masami/software/codelldb/extension/'
-      local codelldb_path = extension_path .. 'adapter/codelldb'
+  end
 
-      local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
+  -- NOTE: for rust-tools
+  if server.name == "rust_analyzer" then
+    -- Update this path
+    -- NOTE: 指定调试器为Codelldb
+    local extension_path = '/home/masami/software/codelldb/extension/'
+    local codelldb_path = extension_path .. 'adapter/codelldb'
 
-      local rustopts = {
-            tools = {
+    local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
 
-                autoSetHints = true,
-                hover_with_actions = true,
-                inlay_hints = {
-                    show_parameter_hints = true,
-                    parameter_hints_prefix = ": ",
-                    other_hints_prefix = "=> ",
-                    -- The color of the hints
-                    highlight = "Comment",
-                },
-            },
-            server = vim.tbl_deep_extend("force", server:get_default_options(), opts, {
-                settings = {
-                    ["rust-analyzer"] = {
-                        -- completion = {
-                        --     postfix = {
-                        --         enable = false
-                        --     }
-                        -- },
-                        -- checkOnSave = {
-                        --     command = "clippy"
-                        -- },
-                    }
-                }
-            }),
-                        -- debugging stuff
-            dap = {
-              adapter = require('rust-tools.dap').get_codelldb_adapter(
-                          codelldb_path, liblldb_path)
-            }
+    local rustopts = {
+      tools = {
+
+        autoSetHints = true,
+        hover_with_actions = true,
+        inlay_hints = {
+          show_parameter_hints = true,
+          parameter_hints_prefix = ": ",
+          other_hints_prefix = "=> ",
+          -- The color of the hints
+          highlight = "Comment",
+        },
+      },
+      server = vim.tbl_deep_extend("force", server:get_default_options(), opts, {
+        settings = {
+          ["rust-analyzer"] = {
+            -- completion = {
+            --     postfix = {
+            --         enable = false
+            --     }
+            -- },
+            -- checkOnSave = {
+            --     command = "clippy"
+            -- },
+          }
+        }
+      }),
+      -- debugging stuff
+      dap = {
+        adapter = require('rust-tools.dap').get_codelldb_adapter(
+          codelldb_path, liblldb_path)
       }
-      require("rust-tools").setup(rustopts)
-      server:attach_buffers()
-      return
-    end
+    }
+    require("rust-tools").setup(rustopts)
+    server:attach_buffers()
+    return
+  end
 
 
-    -- This setup() function is exactly the same as lspconfig's setup function.
-    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-    server:setup(opts)
+  -- This setup() function is exactly the same as lspconfig's setup function.
+  -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+  server:setup(opts)
 end)
 
 
 -- fidget.nvim for lsp progress
-require"fidget".setup{}
+require "fidget".setup {}
