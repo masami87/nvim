@@ -41,7 +41,7 @@ vim.g.material_style = 'deep ocean'
 
 require('material').setup({
 	contrast = {
-		sidebars = true,
+		sidebars = false,
 		cursor_line = true,
     non_current_windows = true
 	},
