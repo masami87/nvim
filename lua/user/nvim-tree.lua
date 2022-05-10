@@ -62,7 +62,8 @@ nvim_tree.setup {
     },
   },
   update_focused_file = {
-    enable = true,
+    -- 这样查看源码时nvim_tree不会更新到源码的目录
+    enable = false,
     update_cwd = true,
     ignore_list = {},
   },
