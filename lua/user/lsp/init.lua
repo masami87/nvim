@@ -77,7 +77,8 @@ lsp_installer.on_server_ready(function(server)
   --     opts.root_dir = function() ... end
   -- end
   if server.name == "html" then
-    opts.capabilities.textDocument.completion.completionItem.snippetSupport = true
+    -- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities) 该行已经做了下面这步
+    -- opts.capabilities.textDocument.completion.completionItem.snippetSupport = true
     local html_opts = require("user.lsp.settings.html")
     opts = vim.tbl_deep_extend("force", html_opts, opts)
   end
