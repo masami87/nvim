@@ -23,6 +23,12 @@ end
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+  -- 不用tsserver提供的formatting, 用null-ls
+  -- 参考https://www.youtube.com/watch?v=b7OguLuaYvE&list=PLhoH5vyxr6Qq41NFL4GvhFp-WLd5xzIzZ&index=17&t=144s
+  if client.name == "tsserver" then
+    client.resolved_capabilities.document_formatting = false
+  end
+
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -145,3 +151,5 @@ end)
 
 -- fidget.nvim for lsp progress
 require "fidget".setup {}
+-- 启用null-ls
+require "user.lsp.null-ls"

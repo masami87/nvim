@@ -103,6 +103,7 @@ return packer.startup(function(use)
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
   use "ray-x/lsp_signature.nvim" -- function signature hint
   use "j-hui/fidget.nvim"
+  use "jose-elias-alvarez/null-ls.nvim" -- 提供额外的format和linting
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"

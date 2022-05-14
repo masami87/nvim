@@ -1,6 +1,6 @@
 return {
   init_options = {
-    -- 使用format
-    provideFormatter = true
+    -- 不使用format，使用null-ls提供的format
+    provideFormatter = false
   }
 }
