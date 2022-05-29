@@ -35,7 +35,8 @@ local function footer()
 	-- local fortune = handle:read("*a")
 	-- handle:close()
 	-- return fortune
-	return "Do not go gentle into that good night"
+	-- return "Do not go gentle into that good night"
+  return "全世界无产者，联合起来!"
 end
 
 dashboard.section.footer.val = footer()
