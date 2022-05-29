@@ -59,6 +59,10 @@ return packer.startup(function(use)
   use 'rebelot/kanagawa.nvim'
   use 'tiagovla/tokyodark.nvim'
   use 'marko-cerovac/material.nvim'
+  use({
+    "catppuccin/nvim",
+    as = "catppuccin"
+  })
 
   use "goolord/alpha-nvim"
 
@@ -131,7 +135,7 @@ return packer.startup(function(use)
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
-  -- 
+  --
   -- if PACKER_BOOTSTRAP then
   --   require("packer").sync()
   -- end

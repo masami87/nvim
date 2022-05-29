@@ -64,8 +64,13 @@ require('material').setup({
 	lualine_style = 'stealth'
 })
 
--- Enable the colorscheme
-vim.cmd 'colorscheme material'
+-- catppuccin
+-- local catppuccin = require("catppuccin")
+-- -- configure it
+-- catppuccin.setup()
+-- -- vim.g.catppuccin_flavour = "frappe" -- latte, frappe, macchiato, mocha
+-- local colorscheme = "catppuccin"
+
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not status_ok then
